@@ -1,0 +1,363 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>landing page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #00ff88;
+            --secondary: #00e1ff;
+            --dark-bg: #06080a;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+            --text-dim: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+
+        body {
+            background-color: var(--dark-bg);
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(0, 255, 136, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 100% 100%, rgba(0, 225, 255, 0.1) 0%, transparent 40%);
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- TICKER --- */
+        .ticker-wrap {
+            width: 100%;
+            background: rgba(0, 255, 136, 0.1);
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            overflow: hidden;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .ticker-move {
+            display: inline-block;
+            white-space: nowrap;
+            animation: ticker 30s linear infinite;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .container { 
+            width: 90%; 
+            max-width: 500px; 
+            margin: 0 auto; 
+            padding: 40px 0;
+        }
+
+        /* --- HERO --- */
+        .hero-section { text-align: center; }
+
+        .logo-box {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .logo-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 24px;
+            border: 2px solid var(--primary);
+            padding: 5px;
+            background: var(--dark-bg);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
+        }
+
+        .verified-badge {
+            position: absolute;
+            bottom: 5px;
+            right: -5px;
+            background: #007bff;
+            color: white;
+            border-radius: 50%;
+            padding: 5px;
+            font-size: 10px;
+            border: 2px solid var(--dark-bg);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff 70%, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            color: var(--text-dim);
+            font-size: 1rem;
+            margin-bottom: 35px;
+        }
+
+        /* --- ZOOM IN/OUT ANIMATED BUTTON --- */
+        .main-button {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: #000;
+            text-decoration: none;
+            padding: 22px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            transition: 0.3s;
+            /* Zoom Effect Animation */
+            animation: zoomInOut 2s ease-in-out infinite;
+            overflow: hidden;
+            border: none;
+            outline: none;
+        }
+
+        @keyframes zoomInOut {
+            0% { 
+                transform: scale(1); 
+                box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+            }
+            50% { 
+                transform: scale(1.08); 
+                box-shadow: 0 20px 50px rgba(0, 255, 136, 0.6);
+            }
+            100% { 
+                transform: scale(1); 
+                box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+            }
+        }
+
+        .main-button i {
+            margin-right: 15px;
+            font-size: 1.7rem;
+        }
+
+        /* Shining line inside button */
+        .main-button::after {
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: -100%; 
+            width: 100%; 
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        /* --- STATS & FEATURES --- */
+        .stats-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .stat-box {
+            background: var(--card-bg);
+            padding: 15px 5px;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .stat-box .val { font-weight: 800; color: var(--secondary); font-size: 1.1rem; display: block;}
+        .stat-box .lbl { font-size: 0.65rem; color: var(--text-dim); text-transform: uppercase; margin-top: 4px; display: block;}
+
+        .section-title {
+            text-align: left;
+            font-size: 0.9rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            display: block;
+            font-weight: 700;
+        }
+
+        .feature-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            text-align: left;
+        }
+
+        .feature-item i { color: var(--primary); font-size: 1.2rem; margin-top: 3px; }
+        .feature-item h3 { font-size: 1rem; margin-bottom: 5px; }
+        .feature-item p { font-size: 0.85rem; color: var(--text-dim); }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 50px 20px;
+            text-align: center;
+            background: rgba(0,0,0,0.4);
+        }
+
+        .disclaimer {
+            font-size: 0.75rem;
+            color: #555;
+            margin-bottom: 30px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .agency-footer {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #111;
+            padding: 14px 28px;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .agency-footer:hover { border-color: var(--secondary); transform: translateY(-2px); }
+        .agency-footer span { font-size: 0.85rem; color: #888; }
+        .agency-footer strong { font-size: 0.85rem; color: var(--secondary); }
+
+        /* Status Dot */
+        .live-status {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-top: -10px;
+            margin-bottom: 30px;
+        }
+
+        .dot {
+            height: 8px;
+            width: 8px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
+            animation: blink 1.2s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ticker-wrap">
+        <div class="ticker-move">
+            🚀 BANK NIFTY: PREDICTED 450 PTS MOVE HIT &nbsp;&nbsp; | &nbsp;&nbsp; 🔥 RELIANCE TARGET ACHIEVED &nbsp;&nbsp; | &nbsp;&nbsp; 📊 92% ACCURACY SECURED &nbsp;&nbsp; | &nbsp;&nbsp; 📥 NEW SIGNAL POSTED IN TELEGRAM &nbsp;&nbsp; | &nbsp;&nbsp; 🚀 NIFTY 50 BULLISH
+        </div>
+    </div>
+
+    <div class="container">
+        
+        <div class="hero-section">
+            <div class="logo-box">
+                <img src="https://fantasticczone.site/wp-content/uploads/2026/04/images-1.jpg" alt="Logo" class="logo-img">
+                <div class="verified-badge"><i class="fas fa-check"></i></div>
+            </div>
+            <h1>𝐁𝐀𝐀𝐃𝐒𝐇𝐀𝐇 𝐁𝐑𝐎𝐊𝐈𝐍𝐆 ™�
+</h1>
+            <p class="hero-desc">India's most powerful trading community. Master Options, Equity, and Intraday moves with institutional precision.</p>
+        </div>
+
+        <a href="https://t.me/+hq3yAFdGmikyZjZl" class="main-button">
+            <i class="fab fa-telegram"></i>
+            JOIN FREE CHANNEL
+        </a>
+
+        <div class="live-status">
+            <span class="dot"></span> 1,248 Traders Online Now
+        </div>
+
+        <div class="stats-row">
+            <div class="stat-box">
+                <span class="val">50K+</span>
+                <span class="lbl">Traders</span>
+            </div>
+            <div class="stat-box">
+                <span class="val">92%</span>
+                <span class="lbl">Wins</span>
+            </div>
+            <div class="stat-box">
+                <span class="val">FREE</span>
+                <span class="lbl">Signals</span>
+            </div>
+        </div>
+
+        <span class="section-title">Why Expert Traders Join Us</span>
+        <div class="feature-item">
+            <i class="fas fa-bolt"></i>
+            <div>
+                <h3>Instant Trade Alerts</h3>
+                <p>Buy/Sell signals sent instantly to your phone with precise entry points.</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-shield-alt"></i>
+            <div>
+                <h3>Risk Management</h3>
+                <p>Every trade comes with a strict Stop-Loss to protect your hard-earned capital.</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-gem"></i>
+            <div>
+                <h3>Hero or Zero Trades</h3>
+                <p>Special Expiry Day setups for high-return potential trades.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p class="disclaimer">
+            Risk Warning: Trading involves significant risk. Our content is for educational guidance only. Please trade responsibly and consult experts.
+        </p>
+        
+        <a href="https://telegram.me/+TRlJl628l-FkMWE9" class="agency-footer" target="_blank">
+            <span>Ads Managed by</span>
+            <strong>Nexgroww Agency</strong>
+            <i class="fas fa-external-link-alt" style="margin-left:5px; font-size: 11px; opacity: 0.5;"></i>
+        </a>
+    </footer>
+
+</body>
+</html>
